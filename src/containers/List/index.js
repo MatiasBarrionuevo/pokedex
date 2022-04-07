@@ -42,7 +42,7 @@ class List extends Component {
         this.setState(
             {loadingSearch:true},
             () => {
-                axios.get(`https://pokeapi.co/api/v2/pokemon/${value}`)
+                axios.get(`https://pokeapi.co/api/v2/pokemon/${value.toLowerCase()}`)
                 .then(({data}) => this.setState({pokemon:data},this.toggleDrawer))
                 .catch(error => this.setState({
                     showError:true,
