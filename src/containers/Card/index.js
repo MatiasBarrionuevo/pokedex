@@ -17,11 +17,11 @@ class Card extends Component {
         const { url } = this.props;
         axios.get(url)
             .then(({data}) => this.setState({data}))
-            .catch(rsp => console.log(rsp))
+            .catch(rsp => this.setState({error:true}))
             .finally(rsp => {
                 //Timeout to avoid screen flickering
                 setTimeout(() => this.setState({loading:false}),500);
-            });        
+            });
     }
 
     render() {

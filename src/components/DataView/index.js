@@ -1,10 +1,13 @@
 import { ArrowBack, Build, Grade, Leaderboard, OfflineBolt } from "@mui/icons-material";
-import { Button, Divider, Drawer, List, ListItemText, ListSubheader, Typography } from "@mui/material";
+import { Button, Divider, Drawer, FormControl, FormControlLabel, FormGroup, IconButton, List, ListItemText, ListSubheader, Switch, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import CollapseData from "../CollapseData";
 import StatsGrid from "../StatsGrid";
 import TypeGrid from "../TypeGrid";
+import CachedIcon from '@mui/icons-material/Cached';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import TransgenderIcon from '@mui/icons-material/Transgender';
 import './styles.scss';
 
 export function DataView({
@@ -12,6 +15,9 @@ export function DataView({
   toggleDrawer,
   data,
 }) {
+    const [imgGender,setImgGender] = useState(false);
+    const [imgShiny, setImgShiny] = useState(false);
+    const [imgOrientation, setImgOrientation] = useState(false);
     if (!data) {
         return null;
     }
@@ -24,6 +30,17 @@ export function DataView({
         stats,
         moves,
     } = data;
+    const hasFemale = imgGender && sprites.front_female && sprites.back_female;
+    let imgSrc = imgOrientation ? 'back' : 'front';
+    if (!hasFemale && !imgShiny) {
+        imgSrc += '_default';
+    } 
+    if (imgShiny) {
+        imgSrc += '_shiny';
+    }
+    if (hasFemale) {
+        imgSrc += '_female';
+    }
     return <Drawer
         anchor="right"
         open={open}
@@ -32,7 +49,35 @@ export function DataView({
     >
         <Button className="backButton" startIcon={<ArrowBack />} onClick={toggleDrawer}>Close</Button>
         <Box className="drawerImageContainer">
-            <img className="drawerImage" src={sprites.front_default} alt={name} />
+            <img className="drawerImage" src={sprites[imgSrc]} alt={name} />
+            <FormControl component="fieldset">
+                <FormGroup row>
+                    <FormControlLabel
+                        value="top"
+                        control={<Switch size="small" checked={imgOrientation} onChange={() => setImgOrientation(!imgOrientation)} color="primary" />}
+                        label={<IconButton size="small" color="primary" onClick={() => setImgOrientation(!imgOrientation)}>
+                            <CachedIcon />
+                        </IconButton>}
+                        labelPlacement="top"
+                    />
+                    <FormControlLabel
+                        value="top"
+                        control={<Switch size="small" checked={imgGender} onChange={() => setImgGender(!imgGender)} color="primary" />}
+                        label={<IconButton size="small" color="secondary" onClick={() => setImgGender(!imgGender)}>
+                            <TransgenderIcon />
+                        </IconButton>}
+                        labelPlacement="top"
+                    />
+                    <FormControlLabel
+                        value="top"
+                        control={<Switch size="small" checked={imgShiny} onChange={() => setImgShiny(!imgShiny)} color="primary" />}
+                        label={<IconButton size="small" color="warning" onClick={() => setImgShiny(!imgShiny)}>
+                            <LightModeIcon />
+                        </IconButton>}
+                        labelPlacement="top"
+                    />
+                </FormGroup>
+            </FormControl>
         </Box>
         <List
             className="drawer"
