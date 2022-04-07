@@ -4,7 +4,7 @@ import React from "react";
 function CardSkeleton(){
     return <Card>
         <CardMedia>
-            <Skeleton variant="rectangular" height={150} animation="wave"/>
+            <Skeleton variant="rectangular" height={window.innerWidth <= 768 ? 300 : 150} animation="wave"/>
         </CardMedia>
         <CardContent>
             <Typography variant="body2">
