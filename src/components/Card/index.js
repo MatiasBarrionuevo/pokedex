@@ -16,7 +16,13 @@ function Card({data}) {
         id,
         types,
     } = data;
-    return <CardMUI>
+    return <>
+    <DataView
+        open={open}
+        toggleDrawer={toggleDrawer}
+        data={data}
+    />
+    <CardMUI>
         <CardActionArea onClick={toggleDrawer}>
             <CardMedia
                 component="img"
@@ -28,17 +34,13 @@ function Card({data}) {
                 <Typography className="order" variant="body2">#{id}</Typography>
                 <Typography className="capitalize" gutterBottom variant="h5" component="div">{name}</Typography>
                 <TypeGrid types={types} />
-                <DataView
-                    open={open}
-                    toggleDrawer={toggleDrawer}
-                    data={data}
-                />
             </CardContent>
         </CardActionArea>
         <CardActions>
             <Button onClick={toggleDrawer}>who's that pokemon?</Button>
         </CardActions>
-    </CardMUI>;
+    </CardMUI>
+    </>;
 }
 
 export default Card;
