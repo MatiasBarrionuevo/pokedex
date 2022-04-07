@@ -14,7 +14,7 @@ In the side view (open via search or each pokemon button ) you can see pokemon d
 
 More features and data to be added in the future 😄
 ## Demo (online)
-TBD
+https://adorable-fenglisu-2b2d62.netlify.app/
 ## How to run (localhost)
  1. clone the repository
  2. `npm install`
