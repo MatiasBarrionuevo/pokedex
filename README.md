@@ -5,6 +5,7 @@ Web page where you can find a list of pokemons and their data (name, order and t
 It has a useful search box to quickly view a pokemon's data by name or order in the side view. 
 In the side view (open via search or each pokemon button ) you can see pokemon data like:
 
+ - sprintes (can switch between shiny, female and orientation)
  - name
  - order
  - types
