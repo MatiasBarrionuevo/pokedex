@@ -1,0 +1,7 @@
+.splashScreen{
+    & .MuiTypography-root{
+        @media (max-width: 768px) {
+            font-size: 1.6em;
+        }
+    }
+}

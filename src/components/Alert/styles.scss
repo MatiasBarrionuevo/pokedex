@@ -1,0 +1,15 @@
+.errorSnackbar {
+    background-color: red;
+    border-radius: 8px;
+    color:white;
+}
+.errorRootText{
+    margin-right: 8px;
+    & .errorPrimaryText{
+        font-weight: 800;
+    }
+    & .errorSecondaryText{
+        color: white;
+        font-size: 0.6em;
+    }
+}

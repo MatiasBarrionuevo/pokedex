@@ -1,0 +1,30 @@
+.drawer{
+    padding:16px;
+    overflow-y: scroll;
+}
+.isHidden{
+    color: darkgrey;
+}
+.isNotHidden{
+    color:black;
+}
+.drawerImageContainer{
+    text-align: center;
+}
+.drawerImage{
+    width: 150px;
+}
+.drawerContainer {
+    & .MuiDrawer-paper {
+        width: 40%;
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+        & .backButton {
+            justify-content: left;
+        }
+    }
+}
+.CollapseBody {
+    padding: 0 16px 16px 16px;
+}

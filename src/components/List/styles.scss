@@ -1,0 +1,7 @@
+.paginationContainer{
+    width: fit-content;
+    margin: 16px auto;
+    @media (max-width: 768px) {
+        margin-bottom: 70px;        
+    }
+}
