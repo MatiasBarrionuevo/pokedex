@@ -9,7 +9,10 @@
     color:black;
 }
 .drawerImageContainer{
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .drawerImage{
     width: 150px;
